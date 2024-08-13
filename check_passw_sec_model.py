@@ -131,10 +131,10 @@ for password in passwords:
     ])
 X = np.array(data)
 
-# 70% training, 30%  evaluation
-X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.3, random_state=42)
+# 70% training, 30%  evaluation. Stratification makes the two sets balanced
+X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.3, random_state=42, stratify=labels)
 
-clf = RandomForestClassifier()
+clf = RandomForestClassifier(random_state=42)
 clf.fit(X_train, y_train)
 
 y_pred = clf.predict(X_test)
