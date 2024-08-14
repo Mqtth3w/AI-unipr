@@ -10,7 +10,7 @@ from sklearn.metrics import accuracy_score, classification_report
 import numpy as np
 
 
-passwords = [ #training set
+passwords = [ #dataset
     "football", "monkey", "master", "shadow", "michael", "jennifer", "hunter", #0
     "buster", "thomas", "superman", "4349934", "harley", "william", "daniel", #0
     "hannah", "ranger", "hell", "123456789", "password1", "qazwsx", "1234", #0
@@ -82,7 +82,7 @@ common_passwords = [
 
 security_levels = ["Too weak", "Weak", "Moderate", "Strong", "Very strong"]
 
-passwords_to_test = [
+passwords_to_test = [ #some other passwords to test
     "StrongP@ssw0rd!", "pippo", "Bhue44#çìend jaif, meo. ow034 ggj4", "MyS3cur3P@$$w0rd",
     "C0mp13xP@ssw0rd!", "NFK 82MS ww2#]ge 344?  ?£%/?£qòKw àòàlLL"
 ]
@@ -131,7 +131,7 @@ for password in passwords:
     ])
 X = np.array(data)
 
-# 70% training, 30%  evaluation. Stratification makes the two sets balanced
+#70% training set, 30%  test set. Stratification makes the two sets balanced
 X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.3, random_state=42, stratify=labels)
 
 clf = RandomForestClassifier(random_state=42)
